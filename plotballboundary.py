@@ -12,8 +12,8 @@ by an input file to the ballooning code.
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
-
-boundary = open('ballrun.out')
+filename = input('Enter ball output file to plot: ')
+boundary = open(filename)
 s_hat = []
 beta_prime = []
 
