@@ -48,6 +48,7 @@ minus_beta_prime = [-1*x for x in beta_prime]
 
 plt.plot(s_hat,minus_beta_prime,'ro')
 plt.axis([min(s_hat),max(s_hat),-10,10])
+#plt.axis([0,5,0,2])
 plt.title("-beta prime vs s_hat")
 plt.xlabel("s_hat")
 plt.grid()
