@@ -8,7 +8,6 @@ READ: This code is for plotting the real and imaginary parts of phi or the
 eigenfunctions vs the z coordinate for .fields or .eigenfunc file generated
 by a gs2 run.  
 
-Look below for where to specify the parameters to be plotted.
 """
 import matplotlib.pyplot as plt
 import numpy as np
