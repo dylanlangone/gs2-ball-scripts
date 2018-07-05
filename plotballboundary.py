@@ -46,12 +46,18 @@ with boundary:
 minus_beta_prime = [-1*x for x in beta_prime]
 #print (minus_beta_prime)
 
-plt.plot(s_hat,minus_beta_prime,'ro')
-plt.axis([min(s_hat),max(s_hat),-10,10])
-#plt.axis([0,5,0,2])
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+ax.plot(s_hat,minus_beta_prime,'ro')
+x_ticks = np.arange(-10, 10, 1)
+y_ticks = np.arange(0, 2, .25)
+#plt.axis([min(s_hat),max(s_hat),-10,10])
+ax.set_xticks(x_ticks)
+ax.set_yticks(y_ticks)
 plt.title("-beta prime vs s_hat")
 plt.xlabel("s_hat")
-plt.grid()
+ax.grid()
 plt.ylabel("-beta prime")
 plt.show()
 
