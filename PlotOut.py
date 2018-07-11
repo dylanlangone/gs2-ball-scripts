@@ -84,7 +84,7 @@ plt.ylabel(yLabel, fontsize = 32)
 xMax = x[len(x) - 1]
 yMin = min(y)
 yMax = max(y)       
-plt.plot(x, y, '-')
+plt.plot(x, y, 'ro')
 plt.axis([0, xMax, yMin, yMax]) 
 plt.show()
 
