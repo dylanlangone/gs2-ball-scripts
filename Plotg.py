@@ -41,15 +41,16 @@ with fields:
             z.append(float(newRow[2]))
             
         
-# x = np.zeros(len(theta))
-# for i in range(0, len(theta)):
-	# x[i] = (r[i]*math.cos(theta[i]))
+x = np.zeros(len(theta))
+for i in range(0, len(theta)):
+	x[i] = (r[i]*math.cos(theta[i]))
 
 
 fields.close()
 
 plt.figure(num=None, figsize=(16, 12), dpi=80, facecolor='w', edgecolor='k')   
-ax = plt.subplot(111, projection='polar')
-ax.plot(theta, r)
+#ax = plt.subplot(111, projection='polar')
+ax = plt.subplot(111)
+ax.plot(r, z)
 ax.grid(True)
 plt.show()
