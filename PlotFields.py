@@ -14,7 +14,7 @@ import numpy as np
 import csv
 
 #edit to specify filename
-fileName = input('Enter .fields or .eigenfuc file: \n')
+fileName = input('Enter .fields or .eigenfunc file: \n')
 fields = open(fileName, 'r')
 
 
