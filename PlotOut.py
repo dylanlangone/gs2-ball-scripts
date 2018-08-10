@@ -81,7 +81,7 @@ plt.grid(True)
 plt.title(yLabel + " vs " + xLabel)
 plt.xlabel(xLabel, fontsize = 32)
 plt.ylabel(yLabel, fontsize = 32)
-xMax = x[len(x) - 1]*1.5
+xMax = max(x)*1.5
 yMin = min(y)
 if (max(y) > 0):
 	yMax = max(y)*1.5
@@ -89,7 +89,7 @@ else:
 	yMax = max(y) - .5*max(y)
 yMin -= yMax
 plt.plot(x, y, 'ro')
-plt.axis([0, .11, yMin, yMax]) 
+plt.axis([0, xMax, yMin, yMax]) 
 plt.show()
 
 for k in range(0, len(x), 4):
