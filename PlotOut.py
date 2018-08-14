@@ -27,8 +27,18 @@ def whatToPlot(k, om):
         raise ValueError('Enter \'ky\', \'kx\', \'omegan\', or \'gamma\'')
     return result
 
+filelist = input("Enter .txt file containing filenames\n")
+ 
+fileNames = []
 
-fileNames = input('Enter .out filenames\n').split(' ')
+fields = open(filelist, 'r')
+with fields:
+	files = csv.reader(fields)
+	for row in files:
+		fileNames.append(row[0][:-1])
+		
+#print (fileNames)
+	
 
 #edit to specify which columns of .out file to plot
 xLabel = input('Enter x-axis parameter: ky or kx\n')
@@ -92,6 +102,6 @@ plt.plot(x, y, 'ro')
 plt.axis([0, xMax, yMin, yMax]) 
 plt.show()
 
-for k in range(0, len(x), 4):
-	print(y[k], " ",)
+#for k in range(0, len(x)):
+#	print(y[k], end =" ")
     
