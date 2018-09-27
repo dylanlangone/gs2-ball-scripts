@@ -1,0 +1,4 @@
+Future suggested changes to files in gs2-ball-scripts repo
+
+Plotgammavsbprim.py
+	Generalize so as to specify x-axis details from command line
