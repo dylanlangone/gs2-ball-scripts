@@ -37,11 +37,13 @@ def plotballfile(filename = input('Enter ball output file to plot: ')):
 				potential_s_hat = float(clean_points[x][2])
 			else:
 				#print(clean_points[x])
-				if (clean_points[x][1] == '0' and clean_points[x+1][1] != '0' and (clean_points[x+1][0] != 's_hat')):
+				if (clean_points[x][1] == '0' and clean_points[x+1][1] != '0' and (clean_points[x+1][0] != 's_hat')): # change all instances of s_hat_input to s_hat
+					print(clean_points[x+1][0])
 					s_hat.append(potential_s_hat)
 					beta_prime.append(float(clean_points[x][2]))
 					# print (clean_points[x][2])
-				elif ((clean_points[x][1] != '0') and (clean_points[x+1][1] == '0') and (clean_points[x+1][0] != 's_hat')):
+				elif ((clean_points[x][1] != '0') and (clean_points[x+1][1] == '0') and (clean_points[x+1][0] != 's_hat' or clean_points[x+1][0] != 's_hat_input')):
+					print(clean_points[x+1][0])
 					s_hat.append(potential_s_hat)
 					beta_prime.append(float(clean_points[x][2]))
 					# print (clean_points[x][2])
