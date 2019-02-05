@@ -27,18 +27,8 @@ def whatToPlot(k, om):
         raise ValueError('Enter \'ky\', \'kx\', \'omegan\', or \'gamma\'')
     return result
 
-filelist = input("Enter .txt file containing filenames\n")
- 
-fileNames = []
 
-fields = open(filelist, 'r')
-with fields:
-	files = csv.reader(fields)
-	for row in files:
-		fileNames.append(row[0][:-1])
-		
-#print (fileNames)
-	
+fileNames = input('Enter .out filenames\n').split(' ')
 
 #edit to specify which columns of .out file to plot
 xLabel = input('Enter x-axis parameter: ky or kx\n')
@@ -86,22 +76,17 @@ for fileName in fileNames:
                 y.append(float(row[yIndex]))
         
 plt.figure(num=None, figsize=(16, 12), dpi=80, facecolor='w', edgecolor='k')
-plt.rcParams.update({'font.size': 32})
+plt.rcParams.update({'font.size': 16})
 plt.grid(True)
 plt.title(yLabel + " vs " + xLabel)
-plt.xlabel(xLabel, fontsize = 32)
-plt.ylabel(yLabel, fontsize = 32)
-xMax = max(x)*1.5
+plt.xlabel(xLabel)
+plt.ylabel(yLabel)
+xMax = x[len(x) - 1]
 yMin = min(y)
-if (max(y) > 0):
-	yMax = max(y)*1.5
-else:
-	yMax = max(y) - .5*max(y)
-yMin -= yMax
+yMax = max(y)
+yrange = yMax - yMin       
 plt.plot(x, y, 'ro')
-plt.axis([0, xMax, yMin, yMax]) 
+plt.axis([0, xMax, yMin - yrange/2, yMax + yrange/2]) 
 plt.show()
 
-#for k in range(0, len(x)):
-#	print(y[k], end =" ")
     
