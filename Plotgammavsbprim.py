@@ -53,6 +53,7 @@ with fields:
 		for row in newrows:
 			if (row[0] == 't=' and row[2] == 'aky='):
 				if (abs(float(row[1]) - maxTime) < .00001 or float(row[1]) > 500):  # make sure we don't encounter numerical instabilities
+					print (row[9])
 					gamma.append(float(row[11]))
 					break
 		
@@ -61,7 +62,7 @@ with fields:
 delta = np.arange(delta_min, delta_max + .001, delta_step)
 print (gamma)
 plt.plot(delta, gamma, 'ro')
-plt.title("gamma vs bprim/bprim_eq for ky = 0.001, N_theta = 64, rho_c = 0.95")
+plt.title("gamma vs bprim/bprim_eq for ky = 0.001, N_theta = 212, rho_c = 0.95")
 plt.xlabel("bprim/bprim_eq")
 plt.ylabel("gamma")
 plt.grid(True)
