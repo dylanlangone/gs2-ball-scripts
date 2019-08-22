@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 7 21:08:51 2018
+Created on Thu Jun  7 21:08:51 2018
 
 @author: Dylan
 
@@ -62,26 +62,27 @@ s_hat = minus_beta_prime = []
 for file in filelist:
 	s_hat = plotballfile(file)[0]
 	minus_beta_prime = plotballfile(file)[1]
-	ax.plot(s_hat, minus_beta_prime, 'ko', ms = 2)
+	ax.plot(s_hat, minus_beta_prime, 'ko', ms = 7)
 	
 #ax.plot(s_hat,minus_beta_prime,'ro')
 s_hat_eq = [-0.96, -0.54, -0.08, 0.41, 0.91, 2.04, 2.73, 3.62, 4.86]
-minus_beta_prime_eq = [0.42, 0.39, 0.35, 0.32, 0.28, 0.2, 0.15, 0.11, 0.06]
+beta_prime_eq = [-0.42, -0.39, -0.35, -0.32, -0.28, -0.2, -0.15, -0.11, -0.06]
+minus_beta_prime_eq = [-1*x for x in beta_prime_eq]
 ax.plot(s_hat_eq, minus_beta_prime_eq, 'b^', ms = 10)
 s_hat_95 = [1.45]
 beta_prime_95 = [.24]
 plt.plot(s_hat_95, beta_prime_95, 'go', ms = 10)
 s_hat = plotballfile('ballrho_95_shape.out')[0]
 minus_beta_prime = plotballfile('ballrho_95_shape.out')[1]
-ax.plot(s_hat, minus_beta_prime, 'ro', ms = 2)
-x_ticks = np.arange(-1, 5.0001, 1)
-y_ticks = np.arange(0, 1.0001, .25)
+ax.plot(s_hat, minus_beta_prime, 'ro', ms = 7)
+x_ticks = np.arange(-10, 10, 1)
+y_ticks = np.arange(0, 2, .25)
 #plt.axis([min(s_hat),max(s_hat),-10,10])
-plt.axis([-1.5,5.01,0,1.01])
-#plt.ylabel("-beta prime")
-#plt.title("-beta prime vs s_hat (rhoc from .90 to .99)")
-#plt.xlabel("s_hat")
-#ax.title.set_fontsize(24)
+plt.axis([-10,10,0,2])
+plt.ylabel("-beta prime")
+plt.title("-beta prime vs s_hat (rhoc from .90 to .99)")
+plt.xlabel("s_hat")
+ax.title.set_fontsize(24)
 ax.xaxis.label.set_fontsize(24)
 ax.yaxis.label.set_fontsize(24)
 ax.set_xticks(x_ticks)

@@ -1,20 +1,24 @@
 """
-Plots gamma vs bprime or some other independent variable, will later be generalized
+Plots gamma vs bprim or some other independent variable, will later be generalized
 
 @author: Dylan Langone
 
 """
 
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('agg')
+from matplotlib import pyplot as plt
 import numpy as np
 import csv
+import sys
 
 # variable declarations
 gamma  = []
-delta_min = float(input("Enter delta lower bound: "))
-delta_max = float(input("Enter delta upper bound: "))
-delta_step = float(input("Enter delta step size: "))
-filelistname = input("Enter filelist\n") 
+delta_min = float(sys.argv[2])
+delta_max = float(sys.argv[3])
+delta_step = float(sys.argv[4])
+filelistname = sys.argv[1]
+plotname = filelistname[:-9] + '.png' 
 
 fields = open(filelistname, "r")
 with fields:
@@ -60,10 +64,17 @@ with fields:
 
 	
 delta = np.arange(delta_min, delta_max + .001, delta_step)
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
 print (gamma)
-plt.plot(delta, gamma, 'ro')
-plt.title("gamma vs bprim/bprim_eq for ky = 0.001, N_theta = 212, rho_c = 0.95")
-plt.xlabel("bprim/bprim_eq")
-plt.ylabel("gamma")
+ax.plot(delta, gamma, 'ro')
+#plt.title("gamma vs bprim/bprim_eq for ky = 0.001, N_theta = 212, rho_c = 0.95")
+#plt.xlabel("bprim/bprim_eq")
+#plt.ylabel("gamma")
+
+ax.xaxis.label.set_fontsize(48)
+ax.yaxis.label.set_fontsize(48)
+ax.tick_params(axis='both', which='major', labelsize=20)
+ax.tick_params(axis='both', which='minor', labelsize=20)
 plt.grid(True)
-plt.show()
+plt.savefig(plotname)

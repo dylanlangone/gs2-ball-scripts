@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 7 21:08:51 2018
+Created on Fri Apr 12 19:28:51 2019
 
 @author: Dylan
 
@@ -52,9 +52,7 @@ def plotballfile(filename):
 fig = plt.figure()
 ax = fig.add_subplot(1, 1, 1)
 
-filelist = ['ballrho_90_shape.out', 'ballrho_91_shape.out', 'ballrho_92_shape.out','ballrho_93_shape.out', 'ballrho_94_shape.out', 
-'ballrho_96_shape.out', 'ballrho_97_shape.out', 'ballrho_98_shapezoom.out',
-'ballrho_99_shape.out']
+filelist = ['ballr90.out', 'ballr80.out', 'ballr70.out']
 
 
 s_hat = minus_beta_prime = []
@@ -62,19 +60,26 @@ s_hat = minus_beta_prime = []
 for file in filelist:
 	s_hat = plotballfile(file)[0]
 	minus_beta_prime = plotballfile(file)[1]
+	if (file == 'ballr90.out'):
+		s_hat = [x - .8 for x in s_hat]
+		minus_beta_prime = [x - .375 for x in minus_beta_prime]
+		ax.plot([-.422-.8], [-.849 - .375], 'bo', ms = 10)
+	elif (file == 'ballr80.out'):
+		s_hat = [x - .6 for x in s_hat]
+		minus_beta_prime = [x - .3 for x in minus_beta_prime]
+		ax.plot([-4.54-.6], [-.849 - .3], 'bo', ms = 10)
+	elif (file == 'ballr70.out'):
+		s_hat = [x - .2 for x in s_hat]
+		minus_beta_prime = [x - .1 for x in minus_beta_prime]
+		ax.plot([-5.16-.2], [-.36 - .1], 'bo', ms = 10)
+		
 	ax.plot(s_hat, minus_beta_prime, 'ko', ms = 2)
 	
 #ax.plot(s_hat,minus_beta_prime,'ro')
-s_hat_eq = [-0.96, -0.54, -0.08, 0.41, 0.91, 2.04, 2.73, 3.62, 4.86]
-minus_beta_prime_eq = [0.42, 0.39, 0.35, 0.32, 0.28, 0.2, 0.15, 0.11, 0.06]
-ax.plot(s_hat_eq, minus_beta_prime_eq, 'b^', ms = 10)
-s_hat_95 = [1.45]
-beta_prime_95 = [.24]
-plt.plot(s_hat_95, beta_prime_95, 'go', ms = 10)
-s_hat = plotballfile('ballrho_95_shape.out')[0]
-minus_beta_prime = plotballfile('ballrho_95_shape.out')[1]
-ax.plot(s_hat, minus_beta_prime, 'ro', ms = 2)
-x_ticks = np.arange(-1, 5.0001, 1)
+
+
+
+x_ticks = np.arange(-6, 5.0001, 1)
 y_ticks = np.arange(0, 1.0001, .25)
 #plt.axis([min(s_hat),max(s_hat),-10,10])
 plt.axis([-1.5,5.01,0,1.01])

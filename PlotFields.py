@@ -44,6 +44,6 @@ with fields:
 
 fields.close()
 plt.figure(num=None, figsize=(16, 12), dpi=80, facecolor='w', edgecolor='k')        
-plt.plot(x, y, '-')
+plt.plot(x, y)
 plt.show()
 
