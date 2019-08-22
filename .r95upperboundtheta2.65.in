@@ -1,0 +1,142 @@
+&collisions_knobs
+ collision_model='default'
+ heating = .false.
+/
+
+&theta_grid_parameters
+
+ ntheta= 64
+ nperiod= 5
+
+ rhoc = 0.95
+/
+&parameters
+ beta = 0.00323
+ zeff = 1.0
+/
+&theta_grid_eik_knobs
+ itor = 1
+ iflux = 1
+ irho = 2
+
+ ppl_eq = F
+ gen_eq = F
+ efit_eq = T
+ local_eq = F
+
+ eqfile = 'pierre.efit'
+ equal_arc = F
+ bishop = 4
+ s_hat_input = 1.45
+ beta_prime_input = -0.865
+ delrho = 1.e-3
+ isym = 0
+ writelots = F
+/
+&fields_knobs
+ field_option='implicit'
+/
+&gs2_diagnostics_knobs
+ write_moments = T
+ write_hrate = F
+ print_flux_line = F
+ write_nl_flux = F
+ print_line = T
+ write_line = T
+ write_omega = T
+ write_final_fields = T
+ write_eigenfunc = T
+ write_g = F
+ write_verr = F
+ write_symmetry = F
+ nwrite=     50
+ navg=       50
+ nsave = 3000
+ omegatinst = 500.0
+ save_for_restart = .true.
+ omegatol = 1.0e-3
+/
+&le_grids_knobs
+ ngauss = 10
+ negrid = 16
+ vcut= 2.5
+/
+&dist_fn_knobs
+ adiabatic_option="iphi00=2"
+ gridfac=   1.0
+ boundary_option="default"
+ mach = 0.0
+/
+
+&kt_grids_knobs
+ grid_option='range'
+/
+&kt_grids_range_parameters
+ naky = 1
+ aky_min = 0.002
+ aky_max = 0.003
+ ntheta0 = 1
+ theta0_min = 2.65
+ theta0_max = 2.65
+/
+&init_g_knobs
+ chop_side = T
+ phiinit=   1.e-3
+ restart_file = "nc/em06.nc"
+ ginit_option= "default"
+/
+&knobs
+ fphi =   1.0
+ fapar =  1.0
+ faperp = 1.0
+ delt = 0.5
+ nstep = 5000
+/
+&species_knobs
+ nspec= 2
+/
+&species_parameters_1
+ z=   1.0
+ mass=   1.0
+ dens=   1.0
+ temp=   1.0
+ tprim = 133.88
+ fprim=  0.0
+ uprim=  0.0
+ vnewk=  0.00
+ type='ion'
+/
+&dist_fn_species_knobs_1
+ fexpr= 0.48
+ bakdif= 0.02
+/
+&species_parameters_2
+ z=   -1.0
+ mass=   2.7e-4
+ dens=   1.0
+ temp=   1.0
+ tprim=  133.88
+ fprim=  0.0
+ uprim=  0.0
+ vnewk=  0.00
+ type='electron'
+/
+&dist_fn_species_knobs_2
+ fexpr= 0.48
+ bakdif= 0.02
+/
+&theta_grid_knobs
+ equilibrium_option='eik'
+/
+&nonlinear_terms_knobs
+ nonlinear_mode='off'
+ cfl = 0.25
+/
+&reinit_knobs
+ delt_adj = 2.0
+ delt_minimum = 1.e-4
+/
+&layouts_knobs
+ layout = 'lxyes'
+ local_field_solve = F
+/
